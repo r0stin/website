@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:'Geist',-apple-system,system-ui,sans-serif;color:#191714;background:#faf8f5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+  ::selection{background:rgba(43,98,222,.16);color:#191714}
+  input,textarea,button,select{font-family:inherit}
+  a{color:inherit;text-decoration:none}
+  @keyframes drift1{0%{transform:translate(0,0) scale(1)}50%{transform:translate(8%,6%) scale(1.15)}100%{transform:translate(0,0) scale(1)}}
+  @keyframes drift2{0%{transform:translate(0,0) scale(1.1)}50%{transform:translate(-10%,-4%) scale(.95)}100%{transform:translate(0,0) scale(1.1)}}
+  @keyframes drift3{0%{transform:translate(0,0) scale(1)}50%{transform:translate(6%,-8%) scale(1.2)}100%{transform:translate(0,0) scale(1)}}
+  @keyframes floaty{0%{transform:translateY(0) rotate(-.6deg)}50%{transform:translateY(-16px) rotate(.6deg)}100%{transform:translateY(0) rotate(-.6deg)}}
+  @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  @keyframes fadeUp{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
+  @keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+  @media (prefers-reduced-motion:reduce){*{animation-duration:.001ms!important}}
+</style>
+</helmet>
+
+<div data-cursor style="position:fixed;top:0;left:0;width:34px;height:34px;border:1.5px solid rgba(43,98,222,.55);border-radius:50%;pointer-events:none;z-index:9999;opacity:0;transform:translate(-100px,-100px);transition:width .28s cubic-bezier(.2,.7,.2,1),height .28s cubic-bezier(.2,.7,.2,1),background .28s,opacity .3s;mix-blend-mode:multiply"></div>
+
+<div data-progress style="position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#4a83ff,#2b62de);z-index:200;transition:width .12s linear"></div>
+
+<!-- NAV -->
+<header data-nav style="position:fixed;top:0;left:0;right:0;z-index:150;transition:background .4s,box-shadow .4s,border-color .4s;border-bottom:1px solid transparent">
+  <nav style="max-width:1200px;margin:0 auto;padding:18px clamp(20px,5vw,40px);display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="#top" style="display:flex;align-items:center;gap:10px;font-weight:600;font-size:16px;letter-spacing:-.01em">
+      <span style="width:11px;height:11px;border-radius:50%;background:linear-gradient(135deg,#4a83ff,#2b62de);box-shadow:0 0 0 4px rgba(43,98,222,.12);animation:pulse 3s ease-in-out infinite"></span>
+      Rostin&nbsp;Maafi
+    </a>
+    <div style="display:flex;align-items:center;gap:clamp(14px,2.4vw,34px);flex-wrap:wrap;justify-content:flex-end">
+      <a href="#services" data-navlink style="font-size:14px;color:#6f6a62;transition:color .25s">Services</a>
+      <a href="#about" data-navlink style="font-size:14px;color:#6f6a62;transition:color .25s">About</a>
+      <a href="#process" data-navlink style="font-size:14px;color:#6f6a62;transition:color .25s">Process</a>
+      <a href="#pricing" data-navlink style="font-size:14px;color:#6f6a62;transition:color .25s">Pricing</a>
+      <a href="#contact" data-magnetic style="font-size:14px;font-weight:500;color:#fff;background:linear-gradient(135deg,#4a83ff,#2b62de);padding:10px 20px;border-radius:999px;white-space:nowrap;box-shadow:0 8px 22px -10px rgba(43,98,222,.7);transition:transform .25s,box-shadow .25s" style-hover="box-shadow:0 14px 30px -10px rgba(43,98,222,.85)">Start a project</a>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="top" style="position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding:120px clamp(20px,5vw,40px) 80px">
+  <div style="position:absolute;inset:0;z-index:0;pointer-events:none">
+    <div style="position:absolute;top:-12%;left:-6%;width:46vw;height:46vw;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(74,131,255,.40),transparent 62%);filter:blur(8px);animation:drift1 18s ease-in-out infinite"></div>
+    <div style="position:absolute;top:8%;right:-10%;width:42vw;height:42vw;border-radius:50%;background:radial-gradient(circle at 60% 40%,rgba(180,160,255,.34),transparent 62%);filter:blur(8px);animation:drift2 22s ease-in-out infinite"></div>
+    <div style="position:absolute;bottom:-18%;left:24%;width:40vw;height:40vw;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(255,190,140,.28),transparent 60%);filter:blur(8px);animation:drift3 26s ease-in-out infinite"></div>
+  </div>
+  <div style="position:relative;z-index:1;max-width:900px;margin:0 auto;width:100%;display:flex;flex-direction:column;align-items:center;text-align:center">
+    <div style="display:flex;flex-direction:column;align-items:center">
+      <div style="display:inline-flex;align-items:center;gap:10px;font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#2b62de;background:rgba(43,98,222,.08);border:1px solid rgba(43,98,222,.16);padding:7px 14px;border-radius:999px;opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)" data-reveal>
+        <span style="width:6px;height:6px;border-radius:50%;background:#2b62de"></span>Queen's CS grad · Software developer
+      </div>
+      <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(2.8rem,6.4vw,5.4rem);line-height:1.02;letter-spacing:-.02em;margin:24px 0 0;color:#191714;opacity:0;transform:translateY(20px);transition:opacity .85s cubic-bezier(.2,.7,.2,1),transform .85s cubic-bezier(.2,.7,.2,1)" data-reveal>
+        <span style="display:block">Build Your Dream Website</span><span style="display:block;font-style:italic;color:#2b62de">with Rostin Maafi</span>
+      </h1>
+      <p style="font-size:clamp(1.05rem,1.4vw,1.2rem);line-height:1.65;color:#6f6a62;max-width:34em;margin:26px auto 0;opacity:0;transform:translateY(20px);transition:opacity .85s cubic-bezier(.2,.7,.2,1),transform .85s cubic-bezier(.2,.7,.2,1)" data-reveal>
+        I'm Rostin — a Queen's University computer science grad who designs and builds fast, beautiful, custom-coded websites for small businesses, startups, and everyone in between.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:34px;opacity:0;transform:translateY(20px);transition:opacity .85s cubic-bezier(.2,.7,.2,1),transform .85s cubic-bezier(.2,.7,.2,1)" data-reveal>
+        <a href="#contact" data-magnetic style="display:inline-flex;align-items:center;gap:9px;font-size:15px;font-weight:500;color:#fff;background:linear-gradient(135deg,#4a83ff,#2b62de);padding:15px 28px;border-radius:999px;box-shadow:0 14px 34px -12px rgba(43,98,222,.7);transition:transform .25s,box-shadow .25s" style-hover="box-shadow:0 20px 44px -12px rgba(43,98,222,.85)">Start a project →</a>
+        <a href="#pricing" data-hoverable style="display:inline-flex;align-items:center;gap:9px;font-size:15px;font-weight:500;color:#191714;background:#fffdfb;border:1px solid #e9e2d6;padding:15px 28px;border-radius:999px;transition:border-color .25s,transform .25s" style-hover="border-color:#2b62de;transform:translateY(-2px)">See pricing</a>
+      </div>
+    </div>
+
+  </div>
+  <div style="position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.16em;color:#a59e93;display:flex;flex-direction:column;align-items:center;gap:8px">
+    SCROLL<span style="width:1px;height:30px;background:linear-gradient(#cdbfae,transparent)"></span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<section style="border-top:1px solid #ece6dc;border-bottom:1px solid #ece6dc;background:#fffdfb;padding:22px 0;overflow:hidden;position:relative">
+  <div style="display:flex;width:max-content;animation:marquee 32s linear infinite">
+    <div style="display:flex;align-items:center;gap:48px;padding-right:48px;font-family:'Geist Mono',monospace;font-size:14px;letter-spacing:.04em;color:#8a857c">
+      <span>Next.js</span><span style="color:#cdbfae">◆</span><span>React</span><span style="color:#cdbfae">◆</span><span>TypeScript</span><span style="color:#cdbfae">◆</span><span>Tailwind CSS</span><span style="color:#cdbfae">◆</span><span>Node.js</span><span style="color:#cdbfae">◆</span><span>Framer Motion</span><span style="color:#cdbfae">◆</span><span>Figma</span><span style="color:#cdbfae">◆</span><span>Webflow</span><span style="color:#cdbfae">◆</span><span>Shopify</span><span style="color:#cdbfae">◆</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:48px;padding-right:48px;font-family:'Geist Mono',monospace;font-size:14px;letter-spacing:.04em;color:#8a857c" aria-hidden="true">
+      <span>Next.js</span><span style="color:#cdbfae">◆</span><span>React</span><span style="color:#cdbfae">◆</span><span>TypeScript</span><span style="color:#cdbfae">◆</span><span>Tailwind CSS</span><span style="color:#cdbfae">◆</span><span>Node.js</span><span style="color:#cdbfae">◆</span><span>Framer Motion</span><span style="color:#cdbfae">◆</span><span>Figma</span><span style="color:#cdbfae">◆</span><span>Webflow</span><span style="color:#cdbfae">◆</span><span>Shopify</span><span style="color:#cdbfae">◆</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="max-width:1200px;margin:0 auto;padding:clamp(80px,12vh,140px) clamp(20px,5vw,40px)">
+  <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);max-width:640px">
+    <div style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#2b62de">What I do</div>
+    <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(2.1rem,4.6vw,3.6rem);line-height:1.04;letter-spacing:-.02em;margin:16px 0 0">Everything you need to <span style="font-style:italic;color:#2b62de">show up online</span> — done properly.</h2>
+    <p style="font-size:1.08rem;line-height:1.65;color:#6f6a62;margin:18px 0 0">No templates phoned in. Every site is custom-designed and hand-coded to load fast, rank well, and actually drive results.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:48px">
+    <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+      <article data-reveal data-hoverable style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1),border-color .3s,box-shadow .3s;background:#fffdfb;border:1px solid #ece6dc;border-radius:16px;padding:30px" style-hover="border-color:#2b62de;box-shadow:0 24px 50px -28px rgba(43,98,222,.4);transform:translateY(-4px)">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <span style="font-family:'Geist Mono',monospace;font-size:13px;color:#2b62de;letter-spacing:.08em">{{ s.num }}</span>
+          <span style="width:34px;height:34px;border-radius:9px;background:rgba(43,98,222,.08);display:flex;align-items:center;justify-content:center;color:#2b62de;font-size:17px">{{ s.glyph }}</span>
+        </div>
+        <h3 style="font-size:1.22rem;font-weight:600;letter-spacing:-.01em;margin:22px 0 0">{{ s.title }}</h3>
+        <p style="font-size:.98rem;line-height:1.6;color:#6f6a62;margin:10px 0 0">{{ s.desc }}</p>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="max-width:1200px;margin:0 auto;padding:clamp(80px,12vh,140px) clamp(20px,5vw,40px)">
+  <div style="max-width:760px;margin:0 auto;text-align:center">
+    <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)">
+      <div style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#2b62de">About me</div>
+      <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(2.1rem,4.4vw,3.4rem);line-height:1.05;letter-spacing:-.02em;margin:16px 0 0">Engineer's rigor.<br><span style="font-style:italic;color:#2b62de">Designer's eye.</span></h2>
+      <p style="font-size:1.08rem;line-height:1.7;color:#4f4a43;margin:22px auto 0;max-width:60ch">I studied computer science at Queen's University, where I learned to build software that's fast, reliable, and well-engineered under the hood. Somewhere along the way I fell for the design side too — the part your customers actually see and feel.</p>
+      <p style="font-size:1.08rem;line-height:1.7;color:#6f6a62;margin:16px auto 0;max-width:60ch">Now I bring both to every project: clean, custom code with a polished, considered interface on top. No drag-and-drop bloat, no cookie-cutter themes — just a site that's genuinely yours and built to last.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:18px;margin-top:40px;max-width:560px;margin-left:auto;margin-right:auto">
+        <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .8s,transform .8s">
+          <div style="font-family:'Instrument Serif',serif;font-size:2.6rem;color:#2b62de;line-height:1"><span data-count="100" data-suffix="">0</span></div>
+          <div style="font-size:.82rem;color:#8a857c;margin-top:4px;line-height:1.4">Lighthouse performance target</div>
+        </div>
+        <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .8s,transform .8s">
+          <div style="font-family:'Instrument Serif',serif;font-size:2.6rem;color:#2b62de;line-height:1"><span data-count="100" data-suffix="%">0</span></div>
+          <div style="font-size:.82rem;color:#8a857c;margin-top:4px;line-height:1.4">Custom code, zero templates</div>
+        </div>
+        <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .8s,transform .8s">
+          <div style="font-family:'Instrument Serif',serif;font-size:2.6rem;color:#2b62de;line-height:1">1–3</div>
+          <div style="font-size:.82rem;color:#8a857c;margin-top:4px;line-height:1.4">Week typical turnaround</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" style="background:#191714;color:#f7f3ec;position:relative;overflow:hidden">
+  <div style="position:absolute;top:-20%;right:-10%;width:50vw;height:50vw;border-radius:50%;background:radial-gradient(circle,rgba(74,131,255,.22),transparent 60%);filter:blur(20px);pointer-events:none"></div>
+  <div style="max-width:1200px;margin:0 auto;padding:clamp(80px,12vh,140px) clamp(20px,5vw,40px);position:relative">
+    <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);max-width:620px">
+      <div style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#7ea6ff">How we work</div>
+      <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(2.1rem,4.6vw,3.6rem);line-height:1.04;letter-spacing:-.02em;margin:16px 0 0">A simple, <span style="font-style:italic;color:#7ea6ff">transparent</span> process.</h2>
+      <p style="font-size:1.08rem;line-height:1.65;color:#b8b2a8;margin:18px 0 0">You always know what's happening and what's next. From first call to launch day, here's how it goes.</p>
+    </div>
+    <div style="position:relative;margin-top:60px">
+      <div data-line style="position:absolute;top:32px;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,#4a83ff,rgba(74,131,255,.2));transition:transform 1.3s cubic-bezier(.2,.7,.2,1)"></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;position:relative">
+        <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+          <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)">
+            <div style="width:64px;height:64px;border-radius:50%;background:#221f1b;border:1px solid #34302a;display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-size:1.7rem;color:#7ea6ff">{{ st.num }}</div>
+            <h3 style="font-size:1.2rem;font-weight:600;margin:22px 0 0;letter-spacing:-.01em">{{ st.title }}</h3>
+            <p style="font-size:.96rem;line-height:1.6;color:#a8a298;margin:10px 0 0">{{ st.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" style="max-width:1200px;margin:0 auto;padding:clamp(80px,12vh,140px) clamp(20px,5vw,40px)">
+  <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);text-align:center;max-width:620px;margin:0 auto">
+    <div style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#2b62de">Pricing</div>
+    <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(2.1rem,4.6vw,3.6rem);line-height:1.04;letter-spacing:-.02em;margin:16px 0 0">Straightforward <span style="font-style:italic;color:#2b62de">packages.</span></h2>
+    <p style="font-size:1.08rem;line-height:1.65;color:#6f6a62;margin:18px 0 0">Fixed scope, fixed price, no surprises. Every package is fully custom — these are starting points we'll tailor to you.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px;margin-top:50px;align-items:stretch">
+    <sc-for list="{{ tiers }}" as="t" hint-placeholder-count="3">
+      <article data-reveal data-hoverable style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1),box-shadow .3s;border-radius:18px;padding:34px 30px;display:flex;flex-direction:column;background:{{ t.bg }};border:1px solid {{ t.border }};color:{{ t.fg }};position:relative" style-hover="box-shadow:0 30px 60px -34px rgba(43,98,222,.5)">
+        <sc-if value="{{ t.featured }}" hint-placeholder-val="">
+          <span style="position:absolute;top:20px;right:20px;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.16);color:#fff;padding:5px 11px;border-radius:999px">Most popular</span>
+        </sc-if>
+        <div style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:{{ t.muted }}">{{ t.name }}</div>
+        <div style="display:flex;align-items:baseline;gap:6px;margin:18px 0 4px">
+          <span style="font-size:.9rem;color:{{ t.muted }}">{{ t.prefix }}</span>
+          <span style="font-family:'Instrument Serif',serif;font-size:3rem;line-height:1">{{ t.price }}</span>
+        </div>
+        <p style="font-size:.96rem;line-height:1.55;color:{{ t.muted }};margin:6px 0 22px">{{ t.blurb }}</p>
+        <div style="height:1px;background:{{ t.border }};margin-bottom:22px"></div>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:13px;flex:1">
+          <sc-for list="{{ t.features }}" as="f" hint-placeholder-count="5">
+            <li style="display:flex;gap:11px;align-items:flex-start;font-size:.96rem;line-height:1.45;color:{{ t.fg }}">
+              <span style="color:{{ t.check }};flex-shrink:0;margin-top:1px">✓</span>{{ f }}
+            </li>
+          </sc-for>
+        </ul>
+        <a href="#contact" data-magnetic style="margin-top:28px;text-align:center;font-size:15px;font-weight:500;padding:14px 24px;border-radius:999px;transition:transform .25s,box-shadow .25s;background:{{ t.btnBg }};color:{{ t.btnFg }};border:1px solid {{ t.btnBorder }}" style-hover="transform:translateY(-2px)">{{ t.cta }}</a>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="background:#f2ede5;border-top:1px solid #ece6dc;border-bottom:1px solid #ece6dc">
+  <div style="max-width:1200px;margin:0 auto;padding:clamp(80px,12vh,140px) clamp(20px,5vw,40px)">
+    <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);max-width:560px">
+      <div style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#2b62de">Kind words</div>
+      <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(2.1rem,4.6vw,3.6rem);line-height:1.04;letter-spacing:-.02em;margin:16px 0 0">Clients who'd <span style="font-style:italic;color:#2b62de">do it again.</span></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:46px">
+      <sc-for list="{{ quotes }}" as="q" hint-placeholder-count="3">
+        <figure data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);margin:0;background:#fffdfb;border:1px solid #e7e0d5;border-radius:16px;padding:30px;display:flex;flex-direction:column">
+          <div style="font-family:'Instrument Serif',serif;font-size:2.4rem;color:#2b62de;line-height:1;height:24px">"</div>
+          <blockquote style="margin:0;font-size:1.06rem;line-height:1.6;color:#34302a;flex:1">{{ q.text }}</blockquote>
+          <figcaption style="display:flex;align-items:center;gap:13px;margin-top:24px">
+            <span style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#4a83ff,#2b62de);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px">{{ q.initials }}</span>
+            <span><span style="display:block;font-weight:600;font-size:.96rem">{{ q.name }}</span><span style="display:block;font-size:.86rem;color:#8a857c">{{ q.role }}</span></span>
+          </figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="max-width:860px;margin:0 auto;padding:clamp(80px,12vh,140px) clamp(20px,5vw,40px)">
+  <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);text-align:center;margin-bottom:46px">
+    <div style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#2b62de">FAQ</div>
+    <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(2.1rem,4.6vw,3.6rem);line-height:1.04;letter-spacing:-.02em;margin:16px 0 0">Good questions, <span style="font-style:italic;color:#2b62de">answered.</span></h2>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+      <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);background:#fffdfb;border:1px solid #e7e0d5;border-radius:14px;overflow:hidden">
+        <button onClick="{{ toggleFaq }}" data-hoverable style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;text-align:left;background:none;border:none;cursor:pointer;padding:22px 26px;font-size:1.06rem;font-weight:500;color:#191714">
+          {{ f.q }}
+          <span data-faqicon style="flex-shrink:0;width:26px;height:26px;border-radius:50%;background:rgba(43,98,222,.08);color:#2b62de;display:flex;align-items:center;justify-content:center;font-size:18px;transition:transform .3s">+</span>
+        </button>
+        <div data-answer style="max-height:0;overflow:hidden;opacity:0;transition:max-height .4s cubic-bezier(.2,.7,.2,1),opacity .4s,padding .4s">
+          <p style="margin:0;padding:0 26px 24px;font-size:1rem;line-height:1.65;color:#6f6a62">{{ f.a }}</p>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="position:relative;overflow:hidden;background:#191714;color:#f7f3ec">
+  <div style="position:absolute;bottom:-25%;left:-8%;width:48vw;height:48vw;border-radius:50%;background:radial-gradient(circle,rgba(74,131,255,.24),transparent 60%);filter:blur(20px);pointer-events:none"></div>
+  <div style="max-width:1100px;margin:0 auto;padding:clamp(80px,12vh,140px) clamp(20px,5vw,40px);position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(40px,5vw,72px)">
+    <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)">
+      <div style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#7ea6ff">Get a quote</div>
+      <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(2.3rem,5vw,4rem);line-height:1.02;letter-spacing:-.02em;margin:16px 0 0">Let's build something <span style="font-style:italic;color:#7ea6ff">worth visiting.</span></h2>
+      <p style="font-size:1.08rem;line-height:1.65;color:#b8b2a8;margin:22px 0 0;max-width:30em">Tell me a little about your project and I'll get back to you within one business day with next steps and a ballpark quote.</p>
+      <a href="{{ emailHref }}" data-hoverable style="display:inline-flex;align-items:center;gap:11px;margin-top:32px;font-size:1.05rem;color:#f7f3ec;border-bottom:1px solid #4a83ff;padding-bottom:4px;transition:opacity .25s" style-hover="opacity:.7">
+        <span style="width:8px;height:8px;border-radius:50%;background:#4a83ff;animation:pulse 2.4s ease-in-out infinite"></span>{{ email }}
+      </a>
+    </div>
+    <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)">
+      <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submitForm }}" style="background:#221f1b;border:1px solid #34302a;border-radius:18px;padding:30px;display:flex;flex-direction:column;gap:16px">
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:.82rem;font-family:'Geist Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#8a857c">Name
+            <input required type="text" placeholder="Jane Doe" data-hoverable style="background:#191714;border:1px solid #3a352e;border-radius:10px;padding:13px 15px;color:#f7f3ec;font-size:15px;outline:none;transition:border-color .25s" style-focus="border-color:#4a83ff">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:.82rem;font-family:'Geist Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#8a857c">Email
+            <input required type="email" placeholder="jane@business.com" data-hoverable style="background:#191714;border:1px solid #3a352e;border-radius:10px;padding:13px 15px;color:#f7f3ec;font-size:15px;outline:none;transition:border-color .25s" style-focus="border-color:#4a83ff">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:.82rem;font-family:'Geist Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#8a857c">Project type
+            <select data-hoverable style="background:#191714;border:1px solid #3a352e;border-radius:10px;padding:13px 15px;color:#f7f3ec;font-size:15px;outline:none;transition:border-color .25s" style-focus="border-color:#4a83ff">
+              <option>Small business website</option>
+              <option>Landing / marketing page</option>
+              <option>Web app or SaaS</option>
+              <option>E-commerce store</option>
+              <option>Portfolio / personal site</option>
+              <option>Redesign of an existing site</option>
+            </select>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:.82rem;font-family:'Geist Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#8a857c">Tell me about it
+            <textarea rows="4" placeholder="What are you building, and what does success look like?" data-hoverable style="background:#191714;border:1px solid #3a352e;border-radius:10px;padding:13px 15px;color:#f7f3ec;font-size:15px;outline:none;resize:vertical;transition:border-color .25s" style-focus="border-color:#4a83ff"></textarea>
+          </label>
+          <button type="submit" data-magnetic style="margin-top:4px;font-size:15px;font-weight:500;color:#fff;background:linear-gradient(135deg,#4a83ff,#2b62de);border:none;padding:15px;border-radius:999px;cursor:pointer;box-shadow:0 14px 34px -12px rgba(43,98,222,.7);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-2px)">Send it →</button>
+        </form>
+      </sc-if>
+      <sc-if value="{{ submitted }}" hint-placeholder-val="">
+        <div style="background:#221f1b;border:1px solid #34302a;border-radius:18px;padding:48px 34px;text-align:center;display:flex;flex-direction:column;align-items:center;animation:fadeUp .6s cubic-bezier(.2,.7,.2,1) both">
+          <div style="width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#4a83ff,#2b62de);display:flex;align-items:center;justify-content:center;font-size:28px;color:#fff">✓</div>
+          <h3 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:1.9rem;margin:22px 0 0">Thanks — got it.</h3>
+          <p style="font-size:1rem;line-height:1.6;color:#b8b2a8;margin:10px 0 0;max-width:24em">I'll review your project and reply at <span style="color:#7ea6ff">{{ email }}</span> within one business day.</p>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#faf8f5;border-top:1px solid #ece6dc">
+  <div style="max-width:1200px;margin:0 auto;padding:48px clamp(20px,5vw,40px);display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
+    <a href="#top" style="display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px">
+      <span style="width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,#4a83ff,#2b62de)"></span>Rostin Maafi
+    </a>
+    <div style="display:flex;flex-wrap:wrap;gap:22px;font-size:14px;color:#6f6a62">
+      <a href="#services" data-hoverable style="transition:color .25s" style-hover="color:#2b62de">Services</a>
+      <a href="#about" data-hoverable style="transition:color .25s" style-hover="color:#2b62de">About</a>
+      <a href="#pricing" data-hoverable style="transition:color .25s" style-hover="color:#2b62de">Pricing</a>
+      <a href="{{ emailHref }}" data-hoverable style="transition:color .25s" style-hover="color:#2b62de">{{ email }}</a>
+    </div>
+    <span style="font-family:'Geist Mono',monospace;font-size:12px;color:#a59e93">© 2026 · Queen's CS · Built from scratch</span>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { submitted: false };
+
+  renderVals() {
+    const _e = 'rostin' + String.fromCharCode(64) + 'maafi.ca';
+    return {
+      email: _e,
+      emailHref: 'mailto:' + _e,
+      submitted: this.state.submitted,
+      notSubmitted: !this.state.submitted,
+      submitForm: (e) => { e.preventDefault(); this.setState({ submitted: true }); },
+      scores: [
+        { val: 100, label: 'Performance' },
+        { val: 100, label: 'Accessibility' },
+        { val: 98, label: 'Best Practices' },
+        { val: 100, label: 'SEO' },
+      ],
+      toggleFaq: (e) => {
+        const item = e.currentTarget.parentElement;
+        const ans = item.querySelector('[data-answer]');
+        const icon = e.currentTarget.querySelector('[data-faqicon]');
+        const open = ans.style.maxHeight && ans.style.maxHeight !== '0px';
+        if (open) {
+          ans.style.maxHeight = '0px'; ans.style.opacity = '0';
+          if (icon) icon.style.transform = 'rotate(0deg)';
+        } else {
+          ans.style.maxHeight = ans.scrollHeight + 40 + 'px'; ans.style.opacity = '1';
+          if (icon) icon.style.transform = 'rotate(135deg)';
+        }
+      },
+      services: [
+        { num: '01', glyph: '◐', title: 'Small business websites', desc: 'A polished, professional home online that earns trust and turns visitors into customers.' },
+        { num: '02', glyph: '◇', title: 'Landing & marketing pages', desc: 'High-converting single pages built for a launch, campaign, or ad — fast and focused.' },
+        { num: '03', glyph: '◈', title: 'Web apps & SaaS', desc: 'Custom dashboards, tools, and products engineered to scale with real users and real data.' },
+        { num: '04', glyph: '▢', title: 'E-commerce stores', desc: 'Storefronts that load fast and check out smoothly — Shopify, headless, or fully custom.' },
+        { num: '05', glyph: '○', title: 'Portfolio & personal sites', desc: 'A distinctive site for your work or brand that actually stands out from the templates.' },
+        { num: '06', glyph: '↻', title: 'Redesigns & rebuilds', desc: 'Already have a site that feels dated or slow? I rebuild it modern, fast, and conversion-ready.' },
+      ],
+      projects: [
+        { title: 'Lumen Coffee', year: "'25", desc: 'Brand site and online ordering for a specialty roaster.', label: 'PROJECT SHOT — LUMEN', bg: 'linear-gradient(135deg,rgba(74,131,255,.14),rgba(180,160,255,.12)),repeating-linear-gradient(45deg,#ece6dc 0 11px,#f4efe7 11px 22px)', tags: ['Next.js', 'E-commerce', 'Brand'] },
+        { title: 'Northwind Dental', year: "'25", desc: 'Booking-first redesign that doubled new-patient inquiries.', label: 'PROJECT SHOT — NORTHWIND', bg: 'linear-gradient(135deg,rgba(255,190,140,.16),rgba(74,131,255,.1)),repeating-linear-gradient(45deg,#ece6dc 0 11px,#f4efe7 11px 22px)', tags: ['Redesign', 'SEO', 'Booking'] },
+        { title: 'Atlas Analytics', year: "'24", desc: 'Marketing site and product UI for a B2B SaaS startup.', label: 'PROJECT SHOT — ATLAS', bg: 'linear-gradient(135deg,rgba(180,160,255,.18),rgba(74,131,255,.12)),repeating-linear-gradient(45deg,#ece6dc 0 11px,#f4efe7 11px 22px)', tags: ['SaaS', 'Dashboard', 'React'] },
+        { title: 'Harbor & Co.', year: "'24", desc: 'Portfolio site for a boutique architecture studio.', label: 'PROJECT SHOT — HARBOR', bg: 'linear-gradient(135deg,rgba(74,131,255,.12),rgba(255,190,140,.14)),repeating-linear-gradient(45deg,#ece6dc 0 11px,#f4efe7 11px 22px)', tags: ['Portfolio', 'Motion', 'CMS'] },
+      ],
+      steps: [
+        { num: '1', title: 'Discover', desc: 'A quick call to understand your business, goals, and what success looks like for you.' },
+        { num: '2', title: 'Design', desc: 'I design the look and feel in Figma so you see and approve it before a line of code.' },
+        { num: '3', title: 'Build', desc: 'Hand-coded, fast, and responsive — with you in the loop on real preview links.' },
+        { num: '4', title: 'Launch', desc: 'I deploy, test, hand over the keys, and stick around to make sure it all runs smooth.' },
+      ],
+      tiers: [
+        { name: 'Starter', prefix: 'from', price: '$1.2k', blurb: 'A sharp one-page site to get you online and credible, fast.', featured: false,
+          bg: '#fffdfb', border: '#e7e0d5', fg: '#34302a', muted: '#8a857c', check: '#2b62de', btnBg: 'transparent', btnFg: '#191714', btnBorder: '#d9d1c4', cta: 'Get started',
+          features: ['Single-page custom design', 'Mobile-perfect & fast', 'Contact form + basic SEO', 'Launch in ~1 week'] },
+        { name: 'Professional', prefix: 'from', price: '$3.5k', blurb: 'A full multi-page site built to grow your business.', featured: true,
+          bg: 'linear-gradient(160deg,#2b62de,#1d4fc0)', border: 'rgba(255,255,255,.18)', fg: '#f3f6ff', muted: 'rgba(243,246,255,.72)', check: '#bcd0ff', btnBg: '#fff', btnFg: '#1d4fc0', btnBorder: '#fff', cta: 'Start your site',
+          features: ['Up to 6 custom pages', 'CMS so you can edit content', 'Advanced SEO & analytics', 'Performance-tuned (90+ Lighthouse)', 'Two rounds of revisions'] },
+        { name: 'Custom', prefix: '', price: "Let's talk", blurb: 'Web apps, e-commerce, and bigger builds, scoped to you.', featured: false,
+          bg: '#fffdfb', border: '#e7e0d5', fg: '#34302a', muted: '#8a857c', check: '#2b62de', btnBg: 'transparent', btnFg: '#191714', btnBorder: '#d9d1c4', cta: 'Book a call',
+          features: ['Custom web app or store', 'Integrations & user accounts', 'Tailored scope & timeline', 'Ongoing support available'] },
+      ],
+      quotes: [
+        { text: 'Rostin took our vague idea and turned it into a site that genuinely looks like a million bucks. Inquiries went up almost immediately.', initials: 'SM', name: 'Sarah Mitchell', role: 'Owner, Lumen Coffee' },
+        { text: 'Fast, communicative, and clearly knows his stuff. The new booking flow paid for the whole project in a month.', initials: 'DR', name: 'Dr. Ravi Patel', role: 'Northwind Dental' },
+        { text: "He thinks like an engineer but cares like a designer. Our SaaS finally has a front-end we're proud of.", initials: 'JC', name: 'Jordan Cole', role: 'Co-founder, Atlas Analytics' },
+      ],
+      faqs: [
+        { q: 'How much does a website cost?', a: 'It depends on scope, but most small-business sites land between $1,200 and $5,000. I always quote a fixed price up front after our first call — so you never get a surprise invoice.' },
+        { q: 'How long does it take?', a: 'A focused landing page can be ready in about a week. A full multi-page site is typically two to three weeks, depending on how quickly we lock in content and feedback.' },
+        { q: 'Do you use templates or page builders?', a: 'No. Everything is custom-designed and hand-coded. That means a faster, more secure site that looks exactly like your brand — not a theme thousands of others are using.' },
+        { q: 'Can I edit the site myself afterwards?', a: 'Yes. For content-heavy sites I set up a simple CMS so you can update text and images without touching code. I also walk you through everything before handover.' },
+        { q: 'What about hosting and maintenance?', a: 'I can deploy to fast, modern hosting and offer optional ongoing maintenance plans. Or I hand you a clean codebase and full docs if you prefer to manage it yourself.' },
+        { q: 'Do you work with clients outside your area?', a: 'Absolutely. Everything runs over email and video calls, so location is never an issue. Most of my work happens entirely remotely.' },
+      ],
+    };
+  }
+
+  componentDidMount() {
+    const root = document;
+
+    // --- Scroll reveal with batch stagger ---
+    const io = new IntersectionObserver((entries) => {
+      const shown = entries.filter(e => e.isIntersecting);
+      shown.forEach((entry, i) => {
+        const el = entry.target;
+        el.style.transitionDelay = Math.min(i * 0.07, 0.45) + 's';
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        if (el.hasAttribute('data-count')) this.countUp(el);
+        io.unobserve(el);
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+
+    const scan = () => root.querySelectorAll('[data-reveal]:not([data-seen]),[data-count]:not([data-seen])').forEach(el => {
+      el.setAttribute('data-seen', '1'); io.observe(el);
+    });
+    scan(); setTimeout(scan, 300); setTimeout(scan, 900);
+
+    // Hero performance gauges (above the fold — animate shortly after mount)
+    setTimeout(() => this.animateGauges(), 450);
+
+    // Failsafe: guarantee content is visible even if the observer/animation timeline never advances
+    setTimeout(() => {
+      root.querySelectorAll('[data-reveal]').forEach((el, i) => {
+        if (getComputedStyle(el).opacity !== '1') {
+          el.style.transitionDelay = Math.min((i % 6) * 0.05, 0.3) + 's';
+          el.style.opacity = '1'; el.style.transform = 'none';
+        }
+      });
+      root.querySelectorAll('[data-count]').forEach(el => { if (el.textContent === '0') this.countUp(el); });
+      const ln = root.querySelector('[data-line]'); if (ln && ln.style.transform.indexOf('scaleX(1)') === -1) ln.style.transform = 'scaleX(1)';
+      this.animateGauges();
+    }, 1300);
+
+    // --- Process line ---
+    const lineIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.style.transform = 'scaleX(1)'; lineIO.unobserve(e.target); } });
+    }, { threshold: 0.3 });
+    const line = root.querySelector('[data-line]'); if (line) lineIO.observe(line);
+
+    // --- Nav scroll state + progress bar ---
+    const nav = root.querySelector('[data-nav]');
+    const bar = root.querySelector('[data-progress]');
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (nav) {
+        if (y > 24) { nav.style.background = 'rgba(250,248,245,.82)'; nav.style.backdropFilter = 'blur(14px)'; nav.style.webkitBackdropFilter = 'blur(14px)'; nav.style.borderColor = '#ece6dc'; nav.style.boxShadow = '0 8px 30px -22px rgba(40,30,20,.5)'; }
+        else { nav.style.background = 'transparent'; nav.style.backdropFilter = 'none'; nav.style.borderColor = 'transparent'; nav.style.boxShadow = 'none'; }
+      }
+      if (bar) {
+        const h = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+    // --- Custom cursor ring ---
+    const ring = root.querySelector('[data-cursor]');
+    if (ring && window.matchMedia('(pointer:fine)').matches) {
+      let mx = window.innerWidth / 2, my = window.innerHeight / 2, cx = mx, cy = my, started = false;
+      window.addEventListener('mousemove', (e) => {
+        mx = e.clientX; my = e.clientY;
+        if (!started) { started = true; ring.style.opacity = '1'; }
+      });
+      const grow = (e) => { if (e.target.closest && e.target.closest('a,button,input,textarea,select,[data-hoverable],[data-magnetic]')) { ring.style.width = '56px'; ring.style.height = '56px'; ring.style.background = 'rgba(43,98,222,.10)'; } };
+      const shrink = (e) => { if (e.target.closest && e.target.closest('a,button,input,textarea,select,[data-hoverable],[data-magnetic]')) { ring.style.width = '34px'; ring.style.height = '34px'; ring.style.background = 'transparent'; } };
+      document.addEventListener('mouseover', grow); document.addEventListener('mouseout', shrink);
+      const loop = () => { cx += (mx - cx) * 0.18; cy += (my - cy) * 0.18; const r = parseFloat(ring.style.width || 34) / 2; ring.style.transform = `translate(${cx - r}px,${cy - r}px)`; requestAnimationFrame(loop); };
+      loop();
+    }
+
+    // --- Magnetic buttons ---
+    root.querySelectorAll('[data-magnetic]').forEach(el => {
+      el.addEventListener('mousemove', (e) => {
+        const r = el.getBoundingClientRect();
+        const mxp = e.clientX - r.left - r.width / 2;
+        const myp = e.clientY - r.top - r.height / 2;
+        el.style.transform = `translate(${mxp * 0.28}px,${myp * 0.4}px)`;
+      });
+      el.addEventListener('mouseleave', () => { el.style.transform = 'translate(0,0)'; });
+    });
+  }
+
+  animateGauges() {
+    if (this._gaugesDone) return;
+    this._gaugesDone = true;
+    const C = 194.8;
+    document.querySelectorAll('[data-gauge]').forEach((ring, i) => {
+      const v = parseInt(ring.getAttribute('data-gauge'), 10) || 0;
+      setTimeout(() => { ring.style.strokeDashoffset = (C * (1 - v / 100)).toFixed(1); }, 120 + i * 90);
+    });
+    document.querySelectorAll('[data-gaugenum]').forEach((el, i) => {
+      setTimeout(() => this.countUp(el, parseInt(el.getAttribute('data-gaugenum'), 10) || 0), 120 + i * 90);
+    });
+  }
+
+  countUp(el, override) {
+    const target = override != null ? override : (parseInt(el.getAttribute('data-count'), 10) || 0);
+    const suffix = el.getAttribute('data-suffix') || '';
+    const dur = 1400; const start = performance.now();
+    const tick = (now) => {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+}
+</script>
+</body>
+</html>
