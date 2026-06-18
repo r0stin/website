@@ -29,8 +29,6 @@
 </style>
 </helmet>
 
-<div data-cursor style="position:fixed;top:0;left:0;width:34px;height:34px;border:1.5px solid rgba(43,98,222,.55);border-radius:50%;pointer-events:none;z-index:9999;opacity:0;transform:translate(-100px,-100px);transition:width .28s cubic-bezier(.2,.7,.2,1),height .28s cubic-bezier(.2,.7,.2,1),background .28s,opacity .3s;mix-blend-mode:multiply"></div>
-
 <div data-progress style="position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#4a83ff,#2b62de);z-index:200;transition:width .12s linear"></div>
 
 <!-- NAV -->
@@ -355,10 +353,10 @@ class Component extends DCLogic {
         { num: '4', title: 'Launch', desc: 'I deploy, test, hand over the keys, and stick around to make sure it all runs smooth.' },
       ],
       tiers: [
-        { name: 'Starter', prefix: 'from', price: '$1.2k', blurb: 'A sharp one-page site to get you online and credible, fast.', featured: false,
+        { name: 'Starter', prefix: 'from', price: '$500', blurb: 'A sharp one-page site to get you online and credible, fast.', featured: false,
           bg: '#fffdfb', border: '#e7e0d5', fg: '#34302a', muted: '#8a857c', check: '#2b62de', btnBg: 'transparent', btnFg: '#191714', btnBorder: '#d9d1c4', cta: 'Get started',
           features: ['Single-page custom design', 'Mobile-perfect & fast', 'Contact form + basic SEO', 'Launch in ~1 week'] },
-        { name: 'Professional', prefix: 'from', price: '$3.5k', blurb: 'A full multi-page site built to grow your business.', featured: true,
+        { name: 'Professional', prefix: 'from', price: '$1000', blurb: 'A full multi-page site built to grow your business.', featured: true,
           bg: 'linear-gradient(160deg,#2b62de,#1d4fc0)', border: 'rgba(255,255,255,.18)', fg: '#f3f6ff', muted: 'rgba(243,246,255,.72)', check: '#bcd0ff', btnBg: '#fff', btnFg: '#1d4fc0', btnBorder: '#fff', cta: 'Start your site',
           features: ['Up to 6 custom pages', 'CMS so you can edit content', 'Advanced SEO & analytics', 'Performance-tuned (90+ Lighthouse)', 'Two rounds of revisions'] },
         { name: 'Custom', prefix: '', price: "Let's talk", blurb: 'Web apps, e-commerce, and bigger builds, scoped to you.', featured: false,
@@ -371,7 +369,7 @@ class Component extends DCLogic {
         { text: "He thinks like an engineer but cares like a designer. Our SaaS finally has a front-end we're proud of.", initials: 'JC', name: 'Jordan Cole', role: 'Co-founder, Atlas Analytics' },
       ],
       faqs: [
-        { q: 'How much does a website cost?', a: 'It depends on scope, but most small-business sites land between $1,200 and $5,000. I always quote a fixed price up front after our first call — so you never get a surprise invoice.' },
+        { q: 'How much does a website cost?', a: 'It depends on scope, but most small-business sites land between $500 and $2,000. I always quote a fixed price up front after our first call — so you never get a surprise invoice.' },
         { q: 'How long does it take?', a: 'A focused landing page can be ready in about a week. A full multi-page site is typically two to three weeks, depending on how quickly we lock in content and feedback.' },
         { q: 'Do you use templates or page builders?', a: 'No. Everything is custom-designed and hand-coded. That means a faster, more secure site that looks exactly like your brand — not a theme thousands of others are using.' },
         { q: 'Can I edit the site myself afterwards?', a: 'Yes. For content-heavy sites I set up a simple CMS so you can update text and images without touching code. I also walk you through everything before handover.' },
@@ -439,21 +437,6 @@ class Component extends DCLogic {
       }
     };
     window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
-
-    // --- Custom cursor ring ---
-    const ring = root.querySelector('[data-cursor]');
-    if (ring && window.matchMedia('(pointer:fine)').matches) {
-      let mx = window.innerWidth / 2, my = window.innerHeight / 2, cx = mx, cy = my, started = false;
-      window.addEventListener('mousemove', (e) => {
-        mx = e.clientX; my = e.clientY;
-        if (!started) { started = true; ring.style.opacity = '1'; }
-      });
-      const grow = (e) => { if (e.target.closest && e.target.closest('a,button,input,textarea,select,[data-hoverable],[data-magnetic]')) { ring.style.width = '56px'; ring.style.height = '56px'; ring.style.background = 'rgba(43,98,222,.10)'; } };
-      const shrink = (e) => { if (e.target.closest && e.target.closest('a,button,input,textarea,select,[data-hoverable],[data-magnetic]')) { ring.style.width = '34px'; ring.style.height = '34px'; ring.style.background = 'transparent'; } };
-      document.addEventListener('mouseover', grow); document.addEventListener('mouseout', shrink);
-      const loop = () => { cx += (mx - cx) * 0.18; cy += (my - cy) * 0.18; const r = parseFloat(ring.style.width || 34) / 2; ring.style.transform = `translate(${cx - r}px,${cy - r}px)`; requestAnimationFrame(loop); };
-      loop();
-    }
 
     // --- Magnetic buttons ---
     root.querySelectorAll('[data-magnetic]').forEach(el => {
