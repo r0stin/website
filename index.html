@@ -58,13 +58,13 @@
   <div style="position:relative;z-index:1;max-width:900px;margin:0 auto;width:100%;display:flex;flex-direction:column;align-items:center;text-align:center">
     <div style="display:flex;flex-direction:column;align-items:center">
       <div style="display:inline-flex;align-items:center;gap:10px;font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#2b62de;background:rgba(43,98,222,.08);border:1px solid rgba(43,98,222,.16);padding:7px 14px;border-radius:999px;opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)" data-reveal>
-        <span style="width:6px;height:6px;border-radius:50%;background:#2b62de"></span>Queen's CS grad · Software developer
+        <span style="width:6px;height:6px;border-radius:50%;background:#2b62de"></span>Software developer
       </div>
       <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(2.8rem,6.4vw,5.4rem);line-height:1.02;letter-spacing:-.02em;margin:24px 0 0;color:#191714;opacity:0;transform:translateY(20px);transition:opacity .85s cubic-bezier(.2,.7,.2,1),transform .85s cubic-bezier(.2,.7,.2,1)" data-reveal>
         <span style="display:block">Build Your Dream Website</span><span style="display:block;font-style:italic;color:#2b62de">with Rostin Maafi</span>
       </h1>
       <p style="font-size:clamp(1.05rem,1.4vw,1.2rem);line-height:1.65;color:#6f6a62;max-width:34em;margin:26px auto 0;opacity:0;transform:translateY(20px);transition:opacity .85s cubic-bezier(.2,.7,.2,1),transform .85s cubic-bezier(.2,.7,.2,1)" data-reveal>
-        I'm Rostin — a Queen's University computer science grad who designs and builds fast, beautiful, custom-coded websites for small businesses, startups, and everyone in between.
+        I'm Rostin, a Queen's University computer science grad who designs and builds fast, beautiful, custom coded websites for small businesses, startups, and everyone in between.
       </p>
       <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:34px;opacity:0;transform:translateY(20px);transition:opacity .85s cubic-bezier(.2,.7,.2,1),transform .85s cubic-bezier(.2,.7,.2,1)" data-reveal>
         <a href="#contact" data-magnetic style="display:inline-flex;align-items:center;gap:9px;font-size:15px;font-weight:500;color:#fff;background:linear-gradient(135deg,#4a83ff,#2b62de);padding:15px 28px;border-radius:999px;box-shadow:0 14px 34px -12px rgba(43,98,222,.7);transition:transform .25s,box-shadow .25s" style-hover="box-shadow:0 20px 44px -12px rgba(43,98,222,.85)">Start a project →</a>
@@ -94,7 +94,7 @@
 <section id="services" style="max-width:1200px;margin:0 auto;padding:clamp(80px,12vh,140px) clamp(20px,5vw,40px)">
   <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);max-width:640px">
     <div style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#2b62de">What I do</div>
-    <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(2.1rem,4.6vw,3.6rem);line-height:1.04;letter-spacing:-.02em;margin:16px 0 0">Everything you need to <span style="font-style:italic;color:#2b62de">show up online</span> — done properly.</h2>
+    <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(2.1rem,4.6vw,3.6rem);line-height:1.04;letter-spacing:-.02em;margin:16px 0 0">Everything you need to <span style="font-style:italic;color:#2b62de">show up online</span> done properly.</h2>
     <p style="font-size:1.08rem;line-height:1.65;color:#6f6a62;margin:18px 0 0">No templates phoned in. Every site is custom-designed and hand-coded to load fast, rank well, and actually drive results.</p>
   </div>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:48px">
@@ -253,13 +253,13 @@
       <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
         <form onSubmit="{{ submitForm }}" style="background:#221f1b;border:1px solid #34302a;border-radius:18px;padding:30px;display:flex;flex-direction:column;gap:16px">
           <label style="display:flex;flex-direction:column;gap:7px;font-size:.82rem;font-family:'Geist Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#8a857c">Name
-            <input required type="text" placeholder="Jane Doe" data-hoverable style="background:#191714;border:1px solid #3a352e;border-radius:10px;padding:13px 15px;color:#f7f3ec;font-size:15px;outline:none;transition:border-color .25s" style-focus="border-color:#4a83ff">
+            <input required type="text" name="name" placeholder="Jane Doe" data-hoverable style="background:#191714;border:1px solid #3a352e;border-radius:10px;padding:13px 15px;color:#f7f3ec;font-size:15px;outline:none;transition:border-color .25s" style-focus="border-color:#4a83ff">
           </label>
           <label style="display:flex;flex-direction:column;gap:7px;font-size:.82rem;font-family:'Geist Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#8a857c">Email
-            <input required type="email" placeholder="jane@business.com" data-hoverable style="background:#191714;border:1px solid #3a352e;border-radius:10px;padding:13px 15px;color:#f7f3ec;font-size:15px;outline:none;transition:border-color .25s" style-focus="border-color:#4a83ff">
+            <input required type="email" name="email" placeholder="jane@business.com" data-hoverable style="background:#191714;border:1px solid #3a352e;border-radius:10px;padding:13px 15px;color:#f7f3ec;font-size:15px;outline:none;transition:border-color .25s" style-focus="border-color:#4a83ff">
           </label>
           <label style="display:flex;flex-direction:column;gap:7px;font-size:.82rem;font-family:'Geist Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#8a857c">Project type
-            <select data-hoverable style="background:#191714;border:1px solid #3a352e;border-radius:10px;padding:13px 15px;color:#f7f3ec;font-size:15px;outline:none;transition:border-color .25s" style-focus="border-color:#4a83ff">
+            <select name="project_type" data-hoverable style="background:#191714;border:1px solid #3a352e;border-radius:10px;padding:13px 15px;color:#f7f3ec;font-size:15px;outline:none;transition:border-color .25s" style-focus="border-color:#4a83ff">
               <option>Small business website</option>
               <option>Landing / marketing page</option>
               <option>Web app or SaaS</option>
@@ -269,9 +269,12 @@
             </select>
           </label>
           <label style="display:flex;flex-direction:column;gap:7px;font-size:.82rem;font-family:'Geist Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#8a857c">Tell me about it
-            <textarea rows="4" placeholder="What are you building, and what does success look like?" data-hoverable style="background:#191714;border:1px solid #3a352e;border-radius:10px;padding:13px 15px;color:#f7f3ec;font-size:15px;outline:none;resize:vertical;transition:border-color .25s" style-focus="border-color:#4a83ff"></textarea>
+            <textarea rows="4" name="message" placeholder="What are you building, and what does success look like?" data-hoverable style="background:#191714;border:1px solid #3a352e;border-radius:10px;padding:13px 15px;color:#f7f3ec;font-size:15px;outline:none;resize:vertical;transition:border-color .25s" style-focus="border-color:#4a83ff"></textarea>
           </label>
-          <button type="submit" data-magnetic style="margin-top:4px;font-size:15px;font-weight:500;color:#fff;background:linear-gradient(135deg,#4a83ff,#2b62de);border:none;padding:15px;border-radius:999px;cursor:pointer;box-shadow:0 14px 34px -12px rgba(43,98,222,.7);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-2px)">Send it →</button>
+          <sc-if value="{{ hasError }}" hint-placeholder-val="">
+            <p style="margin:0;font-size:.86rem;line-height:1.4;color:#ff9b8a">{{ error }}</p>
+          </sc-if>
+          <button type="submit" data-magnetic style="margin-top:4px;font-size:15px;font-weight:500;color:#fff;background:linear-gradient(135deg,#4a83ff,#2b62de);border:none;padding:15px;border-radius:999px;cursor:pointer;box-shadow:0 14px 34px -12px rgba(43,98,222,.7);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-2px)">{{ sendLabel }}</button>
         </form>
       </sc-if>
       <sc-if value="{{ submitted }}" hint-placeholder-val="">
@@ -303,7 +306,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { submitted: false };
+  state = { submitted: false, sending: false, error: '' };
 
   renderVals() {
     const _e = 'rostin' + String.fromCharCode(64) + 'maafi.ca';
@@ -312,7 +315,42 @@ class Component extends DCLogic {
       emailHref: 'mailto:' + _e,
       submitted: this.state.submitted,
       notSubmitted: !this.state.submitted,
-      submitForm: (e) => { e.preventDefault(); this.setState({ submitted: true }); },
+      sending: this.state.sending,
+      hasError: !!this.state.error,
+      error: this.state.error,
+      sendLabel: this.state.sending ? 'Sending…' : 'Send it →',
+      submitForm: (e) => {
+        e.preventDefault();
+        if (this.state.sending) return;
+        const form = e.currentTarget;
+        const data = new FormData(form);
+        const name = (data.get('name') || '').toString().trim();
+        const email = (data.get('email') || '').toString().trim();
+        const message = (data.get('message') || '').toString().trim();
+        const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        if (!name) { this.setState({ error: 'Please enter your name.' }); return; }
+        if (!emailOk) { this.setState({ error: 'Please enter a valid email address.' }); return; }
+        if (!message) { this.setState({ error: 'Please tell me a little about your project.' }); return; }
+        this.setState({ sending: true, error: '' });
+        fetch('https://formspree.io/f/xaqzgapw', {
+          method: 'POST',
+          body: data,
+          headers: { Accept: 'application/json' },
+        })
+          .then((res) => {
+            if (res.ok) {
+              this.setState({ submitted: true, sending: false, error: '' });
+            } else {
+              return res.json().then((d) => {
+                const msg = d && d.errors ? d.errors.map((x) => x.message).join(', ') : 'Something went wrong. Please try again.';
+                this.setState({ sending: false, error: msg });
+              });
+            }
+          })
+          .catch(() => {
+            this.setState({ sending: false, error: 'Network error. Please try again or email me directly.' });
+          });
+      },
       scores: [
         { val: 100, label: 'Performance' },
         { val: 100, label: 'Accessibility' },
